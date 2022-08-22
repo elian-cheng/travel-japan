@@ -46,10 +46,12 @@
   .wrapper {
     max-width: 1060px;
     margin: 0 auto;
+    padding: 0 20px;
   }
   .wrapper-full {
     max-width: 1262px;
     margin: 0 auto;
+    padding: 0 20px;
   }
   .section-title {
     font-size: 35px;
@@ -116,6 +118,30 @@
   }
   .header-link:hover, .header-link:focus, .header-link:active {
     opacity: .75;
+  }
+  .header-mobile {
+    width: 40px;
+    height: 28px;
+    position: relative;
+    display: none;
+  }
+  .burger-line {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    left: 0;
+  }
+  .burger-line-first {
+    top: 0;
+  }
+  .burger-line-second {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .burger-line-third {
+    bottom: 0;
   }
   /* Header styles end */
 
@@ -208,7 +234,7 @@
     margin: 0;
     padding: 93px 100px 88px 100px;
     position: absolute;
-    top: 0;
+    top: 2px;
     left: 0;
     transform: translateY(-100%);
     background-color: #fff;
@@ -225,7 +251,8 @@
     margin-bottom: 112px;
   }
   .benefits-card-pic {
-    max-width: 66px;
+    width: 65px;
+    height: 65px;
     margin-bottom: 37px;
   }
   .benefits-card-icon {
@@ -360,32 +387,28 @@
   .tours-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0 65px;
+    gap: 0 55px;
     align-items: center;
     margin-bottom: 77px;
   }
   .tour-info {
     padding-left: 45px;
   }
-  .tour-pic {
-    max-width: 597px;
-  }
   .tour-photo {
-    width: 100%;
-    max-height: 354px;
+    min-height: 300px;
     object-fit: cover;
   }
   .tour-title {
     font-size: 30px;
     font-weight: 700;
     line-height: 40px;
-    margin-bottom: 85px;
+    margin-bottom: 55px;
     color: #102746;
   }
   .tour-text {
     font-weight: 400;
     line-height: 24px;
-    margin-bottom: 58px;
+    margin-bottom: 38px;
   }
 
   /* Tours styles end */
@@ -400,10 +423,11 @@
   }
   .top-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 57px;
   }
   .top-card {
+    grid-column: span 2;
     display: flex;
     flex-direction: column;
   }
@@ -531,4 +555,111 @@
   }
 
   /* Footer styles end */
+
+  /* Media start */
+
+  @media screen and (max-width: 950px) {
+    .search-form-field {
+      margin-bottom: 25px;
+    }
+    .benefits-wrap {
+      box-shadow: none;
+    }
+    .benefits {
+      margin-bottom: 75px;
+    }
+    .benefits-cards-grid {
+      padding: 0 15px;
+      grid-column-gap: 35px;
+    }
+    .benefits-card {
+      margin-bottom: 40px;
+    }
+    .benefits-title {
+      padding: 55px 15px;
+    }
+    .card-size-lg {
+      grid-column: span 6;
+    }
+    .card-size-sm {
+      grid-column: span 6;
+    }
+    .tours-grid {
+      gap: 35px;
+    }
+    .tour-title {
+      margin: 0 0 15px 0;
+    }
+    .tour-text {
+      margin-bottom: 20px;
+    }
+    .tour-info {
+      padding-left: 0;
+    }
+    .top-grid {
+      gap: 40px 30px;
+    }
+    .top-card {
+      grid-column: span 3;
+    }
+    .top-card-pic {
+      margin-bottom: 20px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .header-mobile {
+      display: block;
+    }
+    .header-nav {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #0E1D28;
+      z-index: 10;
+      padding: 75px;
+      transform: translateX(100%);
+      transition: all .2s linear;
+    }
+    .header-nav-active {
+      transform: translateX(0);
+    }
+    .header-item {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+    .header-item:last-child {
+      margin-bottom: 0;
+    }
+    .header-link {
+      font-size: 42px;
+      line-height: 48px;
+    }
+    .header-nav-close {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 50px;
+      right: 20px;
+      z-index: 11;
+    }
+    .header-nav-close-line {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      position: absolute;
+      top: 50%;
+    }
+    .header-nav-close-line:first-child {
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .header-nav-close-line:last-child {
+      transform: translateY(-50%) rotate(-45deg);
+    }
+  }
+
+  /* Media end */
 
