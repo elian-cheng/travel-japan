@@ -395,14 +395,15 @@
     padding-left: 45px;
   }
   .tour-photo {
-    min-height: 300px;
+    height: 300px;
     object-fit: cover;
   }
   .tour-title {
     font-size: 30px;
     font-weight: 700;
     line-height: 40px;
-    margin-bottom: 55px;
+    margin-bottom: 40px;
+    margin-top: 15px;
     color: #102746;
   }
   .tour-text {
@@ -558,6 +559,7 @@
 
   /* Media start */
 
+  /* Tablet styles start */
   @media screen and (max-width: 950px) {
     .search-form-field {
       margin-bottom: 25px;
@@ -606,9 +608,15 @@
       margin-bottom: 20px;
     }
   }
-  @media screen and (max-width: 767px) {
+ /* Tablet styles end */
+
+ /* Tablet small styles start */
+  @media screen and (max-width: 768px) {
     .header-mobile {
       display: block;
+    }
+    .header {
+      padding-top: 28px;
     }
     .header-nav {
       position: fixed;
@@ -641,7 +649,7 @@
       width: 40px;
       height: 40px;
       position: absolute;
-      top: 50px;
+      top: 20px;
       right: 20px;
       z-index: 11;
     }
@@ -659,7 +667,164 @@
     .header-nav-close-line:last-child {
       transform: translateY(-50%) rotate(-45deg);
     }
+    .intro {
+      padding-top: 150px;
+      padding-bottom: 80px;
+    }
+    .intro-subtitle {
+      background-color: rgba(44, 40, 40, 0.5);
+    }
+    .search-form-field {
+      width: 75%;
+      margin-right: 50px;
+    }
+    .search-form-submit {
+      width: 75%;
+    }
+    .benefits-cards-grid {
+      gap: 15px;
+    }
+    .benefits-card {
+      margin-bottom: 20px;
+    }
+    .benefits-card-title{
+      font-size: 12px;
+      margin: 10px 0px;
+    }
+    .benefits-card-text {
+      font-size: 10px;
+      margin: 0px 0px 15px 0px;
+    }
+    .benefits-card-more {
+      font-size: 10px;
+    }
+    .card-size-lg, .card-size-sm {
+      height: 300px;
+    }
+    .video-item {
+      padding-top: 56.5%;
+    }
   }
+  /* Tablet small styles end */
+
+  /* Mobile styles start */
+  @media screen and (max-width: 500px) {
+    .header-nav {
+      padding: 75px 30px;
+    }
+    .intro {
+      padding-top: 100px;
+    }
+    .intro-title {
+      font-size: 32px;
+      line-height: 48px;
+    }
+    .intro-subtitle {
+      font-size: 14px;
+    }
+    .search-form-field {
+      width: 100%;
+      margin-right: 0;
+      padding-bottom: 12px;
+      background: transparent url(../img/search-form-circle.svg) no-repeat left 4px;
+    }
+    .search-form-field::placeholder {
+      font-size: 16px;
+    }
+    .search-form-submit {
+      width: 100%;
+    }
+    .benefits {
+      margin-bottom: 50px;
+    }
+    .benefits-cards-grid {
+      justify-content: space-around;
+      align-items: right;
+    }
+    .benefits-card {
+      grid-column: span 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .benefits-card-pic {
+      margin-bottom: 20px;
+    }
+    .benefits-card-title, .benefits-card-text, .benefits-card-more {
+      font-size: 18px;
+    }
+    .benefits-card-text {
+      margin: 15px 15px 30px 15px;
+    }
+    .section-title {
+      margin-bottom: 25px;
+    }
+    .gallery-view-all {
+      margin-bottom: 25px;
+    }
+    .gallery-caption {
+      margin-bottom: 0;
+    }
+    .section-title::after {
+      width: 150px;
+    }
+    .gallery {
+      margin-bottom: 90px;
+    }
+    .card-size-lg, .card-size-sm {
+      height: 230px;
+    }
+    .gallery-card-title {
+      font-size: 30px;
+    }
+    .tours {
+      margin-bottom: 60px;
+    }
+    .tours-grid {
+      margin-bottom: 50px;
+    }
+    .tour-pic, .tour-info {
+      grid-column: span 2;
+    }
+    .tour-photo {
+      height: 230px;
+    }
+    .tour-pic-kyoto-mobile {
+      grid-row-start: -1;
+    }
+    .top {
+      margin-bottom: 60px;
+    }
+    .top-card {
+      grid-column: span 6;
+    }
+    .top-card-photo {
+      height: 230px;
+    }
+    .top-card-text {
+      margin-bottom: 15px;
+    }
+    .footer-logo {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .footer-nav {
+      width: 100%;
+      font-size: 14px;
+    }
+    .footer-menu-title {
+      font-size: 16px;
+    }
+    .footer-menu {
+      margin-bottom: 20px;
+    }
+  }
+  @media screen and (orientation: landscape) {
+    .video-item {
+      padding-top: 45%;
+    }
+  }
+  /* Mobile styles end */
 
   /* Media end */
 
