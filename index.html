@@ -15,33 +15,65 @@
         <div class="wrapper">
             <div class="header-wrapper">
             <div class="header-logo">
-                <a href="/" class="header-logo-link">
+                <a href="#" class="header-logo-link js-scroll">
                     <img src="./img/odigo-logo.svg" alt="Odigo logo" class="header-logo-pic">
                 </a>
             </div>
             <nav class="header-nav">
                 <ul class="header-list">
                     <li class="header-item">
-                        <a href="#!" class="header-link">Articles</a>
+                        <a href="#articles" class="header-link js-scroll">Articles</a>
                     </li>
                     <li class="header-item">
-                        <a href="#!" class="header-link">Locations</a>
+                        <a href="#locations" class="header-link js-scroll">Locations</a>
                     </li>
                     <li class="header-item">
-                        <a href="#!" class="header-link">Videos</a>
+                        <a href="#videos" class="header-link js-scroll">Videos</a>
                     </li>
                     <li class="header-item">
-                        <a href="#!" class="header-link">Sign in</a>
+                        <a href="#!" class="header-link" id="open-modal-btn">Sign in</a>
                     </li>
                 </ul>
+                <div class="header-nav-close">
+                    <span class="header-nav-close-line"></span>
+                    <span class="header-nav-close-line"></span>
+                </div>
             </nav>
+            <div class="header-mobile burger">
+                <span class="burger-line burger-line-first"></span>
+                <span class="burger-line burger-line-second"></span>
+                <span class="burger-line burger-line-third"></span>
+            </div>
         </div>
     </div>
-    </header>
-    <!-- * Header end -->
-    <main>
-        <!-- * Intro start -->
-        <section class="intro">
+    <div class="full-screen-container">
+    <div id="overlay"></div>
+        <div class="login-container" id="modal">
+            <div class="modal-close" id="close-modal-btn">
+                <span class="modal-close-line"></span>
+                <span class="modal-close-line"></span>
+            </div>
+          <h1 class="login-title">Welcome</h1>
+          <form class="form">
+            <div class="input-group success">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email">
+              <span class="msg">Valid email</span>
+            </div>
+            <div class="input-group error">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password">
+              <span class="msg">Incorrect password</span>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+          </form>
+        </div>
+      </div>
+</header>
+<!-- * Header end -->
+<main>
+    <!-- * Intro start -->
+    <section class="intro">
             <div class="wrapper">
                 <h1 class="intro-title">
                     Discover Amazing places in Japan
@@ -156,7 +188,7 @@
         <!-- * Gallery end -->
 
         <!-- * Tours start -->
-        <div class="tours">
+        <div class="tours" id="articles">
             <div class="wrapper-full">
                 <div class="tours-grid tour-card">
                     <div class="tour-pic">
@@ -174,7 +206,7 @@
                         <p class="tour-text">Perhaps surprisingly, fewer than 10% of the 6,852 islands making up the Japanese archipelago are inhabited. But among those 400 or so, travelers are treated to a rich tapestry of natural treasures, deep-seated mysticism, thriving cultural assets and stretches of sprawling urbanity.</p>
                         <a href="#!" class="tour-more">VIEW NEIGHBORHOOD</a>
                     </div>
-                    <div class="tour-pic">
+                    <div class="tour-pic tour-pic-kyoto-mobile">
                         <img src="./img/kyoto-arashiyama.jpg" alt="Featured Neighborhood: Kyoto’s Arashiyama" class="tour-photo">
                     </div>
                 </div>
@@ -183,7 +215,7 @@
         <!-- * Tours end -->
 
         <!-- * Top start -->
-        <section class="top">
+        <section class="top" id="locations">
             <div class="wrapper-full">
                 <h2 class="top-title section-title">Today top places to visit</h2>
                 <div class="top-grid">
@@ -289,7 +321,7 @@
         <!-- * Top end -->
 
         <!-- * Video start -->
-        <div class="video">
+        <div class="video" id="videos">
             <div class="video-wrapper">
                 <div class="video-item">
                     <iframe class="video-element" src="https://www.youtube.com/embed/F0AT_7uVbeo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
