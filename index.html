@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Amazing places in Japan</title>
+    <meta name="description" content="">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js" defer></script>
-    <title>Discover Amazing places in Japan</title>
 </head>
 <body>
     <!-- * Header start -->
@@ -53,16 +63,16 @@
                 <span class="modal-close-line"></span>
                 <span class="modal-close-line"></span>
             </div>
-          <h1 class="login-title">Welcome</h1>
+          <h2 class="login-title">Welcome</h2>
           <form class="form">
             <div class="input-group success">
               <label for="email">Email</label>
-              <input type="email" name="email" id="email">
+              <input type="email" name="email" id="email" autocomplete="on">
               <span class="msg">Valid email</span>
             </div>
             <div class="input-group error">
               <label for="password">Password</label>
-              <input type="password" name="password" id="password">
+              <input type="password" name="password" id="password" autocomplete="on">
               <span class="msg">Incorrect password</span>
             </div>
             <button type="submit" class="login-button">Login</button>
@@ -73,7 +83,8 @@
 <!-- * Header end -->
 <main>
     <!-- * Intro start -->
-    <section class="intro">
+    <!-- We need to use div here instead of section for page indexation of h1 to belong to all page, not only to section -->
+    <div class="intro"> 
             <div class="wrapper">
                 <h1 class="intro-title">
                     Discover Amazing places in Japan
@@ -91,7 +102,7 @@
                     </fieldset>
                 </form>
             </div>
-        </section>
+        </div>
         <!-- * Intro end -->
 
         <!-- * Benefits start -->
@@ -161,29 +172,30 @@
                 <figure class="gallery-card card-size-lg">
                     <img src="./img/gallery-mount-fuji.jpg" alt="Mount Fuji" class="gallery-card-pic">
                     <figcaption class="gallery-card-title">Mount Fuji</figcaption>
-                    <a href="#!" class="gallery-card-link"></a>
+                    <!-- <a href="#!" class="gallery-card-link"></a> -->
                 </figure>
                 <figure class="gallery-card card-size-lg">
                     <img src="./img/gallery-kyoto.jpg" alt="Kyoto" class="gallery-card-pic">
                     <figcaption class="gallery-card-title">Kyoto</figcaption>
-                    <a href="#!" class="gallery-card-link"></a>
+                    <!-- <a href="#!" class="gallery-card-link"></a> -->
                 </figure>
                 <figure class="gallery-card card-size-sm">
                     <img src="./img/gallery-tokyo.jpg" alt="Tokyo" class="gallery-card-pic">
                     <figcaption class="gallery-card-title">Tokyo</figcaption>
-                    <a href="#!" class="gallery-card-link"></a>
+                    <!-- <a href="#!" class="gallery-card-link"></a> -->
                 </figure>
                 <figure class="gallery-card card-size-sm">
                     <img src="./img/gallery-niigata.jpg" alt="Niigata" class="gallery-card-pic">
                     <figcaption class="gallery-card-title">Niigata</figcaption>
-                    <a href="#!" class="gallery-card-link"></a>
+                    <!-- <a href="#!" class="gallery-card-link"></a> -->
                 </figure>
                 <figure class="gallery-card card-size-sm">
                     <img src="./img/gallery-sapporo.jpg" alt="Sapporo" class="gallery-card-pic">
                     <figcaption class="gallery-card-title">Sapporo</figcaption>
-                    <a href="#!" class="gallery-card-link"></a>
+                    <!-- <a href="#!" class="gallery-card-link"></a> -->
                 </figure>
             </div>
+          </div>
         </section>
         <!-- * Gallery end -->
 
@@ -324,7 +336,12 @@
         <div class="video" id="videos">
             <div class="video-wrapper">
                 <div class="video-item">
-                    <iframe class="video-element" src="https://www.youtube.com/embed/F0AT_7uVbeo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe class="video-element" src="https://www.youtube.com/embed/F0AT_7uVbeo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- <object class="video-element" type="movie" data="http://www.youtube.com/v/F0AT_7uVbeo">
+                        <param name="movie" value="http://www.youtube.com/v/F0AT_7uVbeo"></param><param name="allowFullScreen" value="true"/>
+                        <param name="allowscriptaccess" value="always"/>
+                        <embed src="http://www.youtube.com/v/F0AT_7uVbeo" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"></embed>
+                        </object> -->
                 </div>
             </div>
         </div>
