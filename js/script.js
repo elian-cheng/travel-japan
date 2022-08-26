@@ -1,4 +1,4 @@
-// Change header to scrollable version
+// * Change header to scrollable version
 (function () {
   const header = document.querySelector(".header");
   window.onscroll = () => {
@@ -10,9 +10,10 @@
   };
 })();
 
-// Burger handler
-(function () {
-  const menuCloseItem = document.querySelector(".header-nav-close");
+// * Burger handler
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuCloseItem = document.querySelector(".header-nav-close-button");
   const burgerItem = document.querySelector(".burger");
   const menu = document.querySelector(".header-nav");
   const menuLinks = document.querySelectorAll(".header-link");
@@ -23,21 +24,20 @@
   menuCloseItem.addEventListener("click", () => {
     menu.classList.remove("header-nav-active");
   });
-  if (window.innerWidth < 769) {
-    // for (let i = 0; i < menuLinks.length; i++) {
-    //   menuLinks[i].addEventListener("click", () => {
-    //     menu.classList.remove("header-nav-active");
-    //   });
-    // }
-    menuLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        menu.classList.remove("header-nav-active");
-      });
+  // if (window.innerWidth > 768) return;
+  // for (let i = 0; i < menuLinks.length; i++) {
+  //   menuLinks[i].addEventListener("click", () => {
+  //     menu.classList.remove("header-nav-active");
+  //   });
+  // }
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("header-nav-active");
     });
-  }
-})();
+  });
+});
 
-// Scroll to anchors, smooth menu links scrolling
+// * Scroll to anchors, smooth menu links scrolling
 (function () {
   const smoothScroll = function (targetEl, duration) {
     const headerElHeight = document.querySelector(".header").clientHeight; //If the header is not fixed, delete this variable here
@@ -75,29 +75,7 @@
   scrollTo();
 })();
 
-// Modal login form
-(function () {
-  const modal = document.querySelector("#modal");
-  const openModalButton = document.querySelector("#open-modal-btn");
-  const closeModalButton = document.querySelector("#close-modal-btn");
-  const overlay = document.querySelector("#overlay");
-
-  openModalButton.addEventListener("click", () => {
-    modal.classList.add("open");
-    overlay.classList.add("open");
-  });
-
-  function closeModal() {
-    modal.classList.remove("open");
-    overlay.classList.remove("open");
-  }
-
-  closeModalButton.addEventListener("click", closeModal);
-  overlay.addEventListener("click", closeModal);
-})();
-
-// Lite Youtube video embed
-
+// * Lite Youtube video embed
 (function () {
   if (document.querySelector("#videoPlayer")) {
     document
@@ -120,6 +98,102 @@
     return false;
   }
 })();
+
+// * Modal login form show/hide from nav-bar/menu
+(function () {
+  const modal = document.querySelector("#modal");
+  const openModalButton = document.querySelector("#open-modal-btn");
+  const closeModalButton = document.querySelector("#close-modal-btn");
+  const overlay = document.querySelector("#overlay");
+
+  openModalButton.addEventListener("click", () => {
+    modal.classList.add("open");
+    overlay.classList.add("open");
+  });
+
+  function closeModal() {
+    modal.classList.remove("open");
+    overlay.classList.remove("open");
+  }
+
+  closeModalButton.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+})();
+
+// *Work on login/create acc forms display and showing login errors
+
+// Showing login and create acc errors
+// Function will show errors according to the form type - formElement = login/create acc form
+function setFormMessage(formElement, type, message) {
+  const messageElement = formElement.querySelector(".form-message");
+
+  messageElement.textContent = message;
+  messageElement.classList.remove("form-message-success", "form-message-error");
+  messageElement.classList.add(`form-message-${type}`);
+}
+
+// Setting errors on inputs
+function setInputError(inputElement, message) {
+  inputElement.classList.add("form-input-error");
+  inputElement.parentElement.querySelector(
+    ".form-input-error-message"
+  ).textContent = message;
+}
+// Clearing input errors
+function clearInputError(inputElement) {
+  inputElement.classList.remove("form-input-error");
+  inputElement.parentElement.querySelector(
+    ".form-input-error-message"
+  ).textContent = "";
+}
+
+// Change between login and create account forms
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.querySelector("#login");
+  const createAccountForm = document.querySelector("#createAccount");
+
+  // Switch from Login to Create account form when clicking on the link "Don't have an acc?"
+  document.querySelector("#linkCreateAccount").addEventListener("click", e => {
+    e.preventDefault();
+    loginForm.classList.add("form-hidden");
+    createAccountForm.classList.remove("form-hidden");
+  });
+
+  // Switch from Create account form to Login form when clicking on the link "Already have an acc?"
+  document.querySelector("#linkLogin").addEventListener("click", e => {
+    e.preventDefault();
+    loginForm.classList.remove("form-hidden");
+    createAccountForm.classList.add("form-hidden");
+  });
+
+  loginForm.addEventListener("submit", e => {
+    e.preventDefault();
+    // Perform your AJAX/Fetch login
+
+    // Calling the function and showing the default error message
+    setFormMessage(loginForm, "error", "Invalid username/password combination");
+  });
+
+  // When the form input is blurred(user moves focus from it), we show the errors according to the users actions
+  document.querySelectorAll(".form-input").forEach(inputElement => {
+    inputElement.addEventListener("blur", e => {
+      if (
+        e.target.id === "signupUsername" &&
+        e.target.value.length > 0 &&
+        e.target.value.length < 10
+      ) {
+        setInputError(
+          inputElement,
+          "Username must be at least 10 characters long"
+        );
+      }
+    });
+    // When the user types smth in the input, clear the old errors
+    inputElement.addEventListener("input", e => {
+      clearInputError(inputElement);
+    });
+  });
+});
 
 // Self-calling function
 // (function () {
