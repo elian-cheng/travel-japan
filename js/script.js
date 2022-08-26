@@ -1,4 +1,5 @@
-(function changeHeader() {
+// Change header to scrollable version
+(function () {
   const header = document.querySelector(".header");
   window.onscroll = () => {
     if (window.scrollY > 50) {
@@ -10,12 +11,12 @@
 })();
 
 // Burger handler
-
 (function () {
   const menuCloseItem = document.querySelector(".header-nav-close");
   const burgerItem = document.querySelector(".burger");
   const menu = document.querySelector(".header-nav");
   const menuLinks = document.querySelectorAll(".header-link");
+
   burgerItem.addEventListener("click", () => {
     menu.classList.add("header-nav-active");
   });
@@ -75,23 +76,50 @@
 })();
 
 // Modal login form
-const modal = document.querySelector("#modal");
-const openModalButton = document.querySelector("#open-modal-btn");
-const closeModalButton = document.querySelector("#close-modal-btn");
-const overlay = document.querySelector("#overlay");
+(function () {
+  const modal = document.querySelector("#modal");
+  const openModalButton = document.querySelector("#open-modal-btn");
+  const closeModalButton = document.querySelector("#close-modal-btn");
+  const overlay = document.querySelector("#overlay");
 
-openModalButton.addEventListener("click", () => {
-  modal.classList.add("open");
-  overlay.classList.add("open");
-});
+  openModalButton.addEventListener("click", () => {
+    modal.classList.add("open");
+    overlay.classList.add("open");
+  });
 
-function closeModal() {
-  modal.classList.remove("open");
-  overlay.classList.remove("open");
-}
+  function closeModal() {
+    modal.classList.remove("open");
+    overlay.classList.remove("open");
+  }
 
-closeModalButton.addEventListener("click", closeModal);
-overlay.addEventListener("click", closeModal);
+  closeModalButton.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+})();
+
+// Lite Youtube video embed
+
+(function () {
+  if (document.querySelector("#videoPlayer")) {
+    document
+      .querySelector("#videoPlayer a")
+      .addEventListener("click", playVideo);
+  }
+  function playVideo() {
+    const player = document.getElementById("videoPlayer");
+    const id = player.getAttribute("data-id");
+    player.classList.add("loaded");
+    const src =
+      "https://www.youtube.com/embed/" +
+      id +
+      "?autoplay=1&autohide=1&rel=0&modestbranding=1&showinfo=0&border=0&wmode=opaque&theme=light&iv_load_policy=3";
+    var iframe =
+      "<iframe width='100%' height='100%' src='" +
+      src +
+      "' scrolling='no' frameborder='0' allowfullscreen></iframe>";
+    player.innerHTML = iframe;
+    return false;
+  }
+})();
 
 // Self-calling function
 // (function () {
