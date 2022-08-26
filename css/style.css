@@ -35,8 +35,13 @@
     --primary-light-hsl: 200, 100%, 91%;
     --primary-hsl: 200, 100%, 50%;
     --primary-dark-hsl: 200, 100%, 6%;
-    --success-hsl: 100, 60%, 50%;
-    --error-hsl: 0, 60%, 50%;
+    --color-primary: #009579;
+    --color-primary-dark: #007f67;
+    --color-secondary: #252c6a;
+    --color-error: #cc3333;
+    --color-success: #4bb544;
+    --border-radius: 4px;
+
   }
   body {
     font-family: 'Lato', sans-serif;
@@ -126,6 +131,9 @@
   .header-link:hover, .header-link:focus, .header-link:active {
     opacity: .75;
   }
+  #open-modal-btn {
+    transition: all .5s;
+  }
   .header-mobile {
     width: 40px;
     height: 28px;
@@ -150,7 +158,7 @@
   .burger-line-third {
     bottom: 0;
   }
-  /* Login modal form styles */
+  /* Login form styles / modal */
   .full-screen-container {
     display: flex;
     justify-content: center;
@@ -173,13 +181,14 @@
     /* top: 50%; */
     /* left: 25%; */
     /* transform: translate(-50%, -50%); */
-    border: 2px solid white;
+    border: 1px solid hsl(var(--primary-hsl));
     border-radius: .5rem;
     padding: 40px 30px;
     background-color: #0E1D28;
-    box-shadow: 0 0 15px 0 white;
+    box-shadow: 0 0 10px 0 hsl(var(--primary-hsl));
     width: 80%;
-    max-width: 600px;
+    max-width: 550px;
+    transition: all .3s;
   }
   #overlay.open {
     display: block;
@@ -210,7 +219,7 @@
     transform: translateY(-50%) rotate(-45deg);
   }
   
-  .login-title {
+  .form-title {
     margin: 0;
     color: white;
     text-align: center;
@@ -221,63 +230,35 @@
   .form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 40px;
+    gap: 15px;
+    color: white;
   }
   
-  .input-group {
+  .form-input-group {
     display: flex;
     flex-direction: column;
     gap: 7px;
   }
   
-  .input-group label {
+  .form-input-group label {
     color: white;
     font-weight: lighter;
   }
   
-  .input-group input {
+  .form-input-group input {
     font-size: 1.25rem;
     padding: .5em;
-    background-color: hsl(var(--primary-light-hsl), .3);
+    background-color: hsl(var(--primary-light-hsl), .8);
     border: none;
     outline: none;
     border-radius: .25em;
-    color: white;
+    color: black;
     font-weight: lighter;
   }
-  
-  .input-group.success input {
-    box-shadow: 0 0 0 1px hsl(var(--success-hsl));
+  .form-input-group input:focus {
+    box-shadow: 0 0 0 2px hsl(var(--primary-hsl));
   }
-  
-  .input-group.error input {
-    box-shadow: 0 0 0 1px hsl(var(--error-hsl));
-  }
-  
-  .input-group input:focus {
-    box-shadow: 0 0 0 1px hsl(var(--primary-hsl));
-  }
-  
-  .input-group .msg {
-    display: none;
-    font-size: .75rem;
-  }
-  
-  .input-group.success .msg,
-  .input-group.error .msg {
-    display: block;
-  }
-  
-  .input-group.error .msg {
-    color: hsl(var(--error-hsl));
-  }
-  
-  .input-group.success .msg {
-    color: hsl(var(--success-hsl));
-  }
-  
-  .login-button {
+  .form-button {
     padding: .5em 1em;
     font-size: 1.5rem;
     font-weight: lighter;
@@ -288,11 +269,45 @@
     outline: none;
     cursor: pointer;
   }
-  
-  .login-button:hover,
-  .login-button:focus {
+  .form-button:hover,
+  .form-button:focus {
     background-color: hsl(var(--primary-hsl), .4);
   }
+  .form-hidden {
+    display: none;
+  }
+  .form-message {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .form-message-success {
+    color: var(--color-success);
+  }
+  .form-message-error {
+    color: var(--color-error);
+  }
+  .form-input-error {
+    color: var(--color-error);
+    border-color: var(--color-error);
+  }
+  .form-input-error-message {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-error);
+  }
+  .form-text {
+    text-align: center;
+    margin: 15px 0 0 0;
+  }
+  .form-link {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .form-link:hover {
+    text-decoration: underline;
+  }
+
   /* Modal styles end */
   /* Header styles end */
 
@@ -651,18 +666,78 @@
     max-width: 1900px;
     margin: 0 auto;
     position: relative;
-  }
+  } 
   .video-item {
     padding-top: 45%;
-  }
-  .video-element {
+  } 
+  #videoPlayer {
+    background-color: #000;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border: none;
+    overflow: hidden;
+    margin: 0;
   }
+  /* Black line on the videoplayer */
+  #videoPlayer:after { 
+    content: attr(data-title);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-height: 100px;
+    text-align: left;
+    padding: .5em;
+    margin: 0;
+    font-size: 1.2em;
+    color: #fff;
+    transition: opacity 0.7s ease-in-out;
+  }
+  #videoPlayer:hover:after {
+    opacity: 0;
+  }
+  #videoPlayer .thumb {
+    bottom: 0;
+    border: none;
+    display: block;
+    left: 0;
+    margin: 0;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    transition: all 200ms ease-out;
+    -webkit-transition: all 200ms ease-out;
+    background: transparent;
+  }
+  #videoPlayer .thumb:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+  /* #videoPlayer .play {
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+    height: 97px;
+    left: 50%;
+    margin-left: -38px;
+    margin-top: -38px;
+    position: absolute;
+    top: 50%;
+    width: 136px;
+    background: url(../img/videoplayer-button.png) no-repeat;
+  } */
+  #videoPlayer.loaded:after {
+    display: none;
+  }  
 
   /* Video styles end */
 
@@ -799,7 +874,7 @@
       font-size: 42px;
       line-height: 48px;
     }
-    .header-nav-close {
+    .header-nav-close-button {
       width: 40px;
       height: 40px;
       position: absolute;
@@ -972,6 +1047,12 @@
     }
     .footer-menu {
       margin-bottom: 20px;
+    }
+    #videoPlayer:after {
+      display: none;
+    }
+    .video-item {
+      padding-top: 50%;
     }
   }
   @media screen and (orientation: landscape) {
